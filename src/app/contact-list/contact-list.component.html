@@ -1,0 +1,43 @@
+<div class="container w100">
+    <div class="container">
+        <mat-form-field appearance="standard">
+            <mat-label>Filter</mat-label>
+            <input class="w100" matInput type="text" [(ngModel)]= "searchName">
+            <button *ngIf="searchName.length > 0" mat-icon-button aria-label="Clear" (click)="searchName=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            <button matSuffix mat-icon-button matTooltip="Search" (click)="applyFilter()">
+                <mat-icon>search</mat-icon>
+            </button>
+        </mat-form-field>
+        <div>
+            <mat-table [dataSource]="tableDataSource">
+                <ng-container matColumnDef="name">
+                    <mat-header-cell class="" *matHeaderCellDef>{{'Name'}}</mat-header-cell>
+                    <mat-cell class="" *matCellDef="let element">
+                        {{element.name}}
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="url">
+                    <mat-header-cell class="" *matHeaderCellDef>{{'Url'}}</mat-header-cell>
+                    <mat-cell class="" *matCellDef="let element">
+                        {{element.url}}
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="kebab" stickyEnd>
+                    <mat-header-cell class="" *matHeaderCellDef></mat-header-cell>
+                    <mat-cell class="" *matCellDef="let element">
+                        <button mat-icon-button matTooltip="View Image" (click)="viewImage(element)">
+                            <mat-icon>visibility</mat-icon>
+                        </button>
+                    </mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="COLUMNS; sticky: true"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: COLUMNS; let i=index"></mat-row>
+            </mat-table>
+        </div>
+        <mat-paginator [length]="contactCount" [pageSize]="10" [pageSizeOptions]="[10,20,50,100]"
+            (page)=" onPageChange($event)">
+        </mat-paginator>
+    </div>
+</div>
