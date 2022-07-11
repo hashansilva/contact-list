@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
@@ -30,6 +31,7 @@ import { ContactListService } from './services/contact-list.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    FlexLayoutModule,
 
     MatTableModule,
     MatButtonModule,

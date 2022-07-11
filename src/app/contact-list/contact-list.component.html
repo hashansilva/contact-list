@@ -1,16 +1,16 @@
-<div class="container w100">
+<div class="container-wrapper w100" fxLayout fxLayoutAlign="center" fxLayoutGap="10px">
     <div class="container">
-        <mat-form-field appearance="standard">
-            <mat-label>Filter</mat-label>
+        <mat-form-field class="search-form" appearance="standard">
+            <mat-label>Name</mat-label>
             <input class="w100" matInput type="text" [(ngModel)]= "searchName">
-            <button *ngIf="searchName.length > 0" mat-icon-button aria-label="Clear" (click)="searchName=''">
+            <button *ngIf="searchName.length > 0" matSuffix mat-icon-button aria-label="Clear" (click)="clearFilter()">
                 <mat-icon>close</mat-icon>
               </button>
             <button matSuffix mat-icon-button matTooltip="Search" (click)="applyFilter()">
                 <mat-icon>search</mat-icon>
             </button>
         </mat-form-field>
-        <div>
+        <div fxLayout>
             <mat-table [dataSource]="tableDataSource">
                 <ng-container matColumnDef="name">
                     <mat-header-cell class="" *matHeaderCellDef>{{'Name'}}</mat-header-cell>
@@ -20,13 +20,13 @@
                 </ng-container>
                 <ng-container matColumnDef="url">
                     <mat-header-cell class="" *matHeaderCellDef>{{'Url'}}</mat-header-cell>
-                    <mat-cell class="" *matCellDef="let element">
+                    <mat-cell class="url" *matCellDef="let element">
                         {{element.url}}
                     </mat-cell>
                 </ng-container>
                 <ng-container matColumnDef="kebab" stickyEnd>
                     <mat-header-cell class="" *matHeaderCellDef></mat-header-cell>
-                    <mat-cell class="" *matCellDef="let element">
+                    <mat-cell class="kebab" *matCellDef="let element">
                         <button mat-icon-button matTooltip="View Image" (click)="viewImage(element)">
                             <mat-icon>visibility</mat-icon>
                         </button>

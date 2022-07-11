@@ -86,4 +86,9 @@ export class ContactListComponent implements OnInit, OnDestroy {
     this.loadContactData();
   }
 
+  public clearFilter(){
+    this.searchName='';
+    this.loadContactData();
+  }
+
 }
